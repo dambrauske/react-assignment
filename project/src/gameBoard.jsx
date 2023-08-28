@@ -8,10 +8,9 @@ const gameMap = [
 
 const createFullBoard = () => {
     return gameMap.map((item) => {
-        let cell = { number: item };
+        let cell = { number: item, playerIs: false };
 
         if (item === 1) {
-            cell.color = "white";
             cell.text = "START";
         } else if (item % 6 === 0 && item !== 0) {
             cell.color = "lightBlue";
@@ -22,9 +21,9 @@ const createFullBoard = () => {
             cell.price = 100;
             cell.text = "Lightpink street";
         } else if (item % 2 === 0 && !cell.color && item !== 0) {
-            cell.color = "lightyellow";
+            cell.color = "lightgreen";
             cell.price = 45;
-            cell.text = "Lightyellow street";
+            cell.text = "Lightgreen street";
         } else if (!cell.color && item !== 0) {
             cell.color = "violet";
             cell.price = 55;

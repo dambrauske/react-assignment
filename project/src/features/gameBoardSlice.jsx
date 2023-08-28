@@ -1,19 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
-
+import {board} from "../gameBoard.jsx";
 
 
 export const boardSlice = createSlice({
-    name: "playerFigure",
+    name: "gameBoard",
     initialState: {
-        chosenFigure: ''
+        gameBoard: board,
     },
     reducers: {
-        selectPlayerFigure: (state, action) => {
-            state.chosenFigure = action.payload
-        }
+        // addPlayerFigure: (state, action) => {
+        //     state.gameBoard = action.payload
+        // }
     }
 })
 
-export const {selectPlayerFigure} = playerFigureSlice.actions
 
-export default playerFigureSlice.reducer
+
+export default boardSlice.reducer
