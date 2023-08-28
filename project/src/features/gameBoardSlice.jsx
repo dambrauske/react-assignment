@@ -6,14 +6,17 @@ export const boardSlice = createSlice({
     name: "gameBoard",
     initialState: {
         gameBoard: board,
+        dice: ''
     },
     reducers: {
-        // addPlayerFigure: (state, action) => {
-        //     state.gameBoard = action.payload
-        // }
+        rollDice: (state) => {
+            state.dice = Math.floor(Math.random() * 6) + 1
+        }
+
     }
 })
 
 
+export const {rollDice} = boardSlice.actions
 
 export default boardSlice.reducer

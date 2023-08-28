@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {selectPlayerFigure} from "../features/playerFigureSlice.jsx";
+import {playerSlice, selectPlayerFigure} from "../features/playerSlice.jsx";
 
 const Cell = ({cell}) => {
 
-    const playerAt = useSelector((state) => state.playerFigure.playerAt)
-    const playerFigure = useSelector((state) => state.playerFigure.chosenFigure)
+    const playerAt = useSelector((state) => state.player.playerAt)
+    const playerFigure = useSelector((state) => state.player.chosenFigure)
 
     return (
         <div className={"flex flex-col justify-center "}>

@@ -1,10 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import playerFigureSliceReducer from "./features/playerFigureSlice.jsx";
+import playerSliceReducer  from "./features/playerSlice.jsx";
 import boardSliceReducer from "./features/gameBoardSlice.jsx";
 
 export default configureStore({
     reducer: {
-        playerFigure: playerFigureSliceReducer,
+        player: playerSliceReducer,
         gameBoard: boardSliceReducer,
     }
 })

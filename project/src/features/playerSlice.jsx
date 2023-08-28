@@ -4,11 +4,12 @@ const figure = localStorage.getItem("figure");
 const playerPosition = localStorage.getItem("playerPosition");
 
 
-export const playerFigureSlice = createSlice({
-    name: "playerFigure",
+export const playerSlice = createSlice({
+    name: "player",
     initialState: {
     chosenFigure: figure ? JSON.parse(figure) : '',
-        playerAt: playerPosition ? JSON.parse(playerPosition) : 1
+        playerAt: playerPosition ? JSON.parse(playerPosition) : 1,
+        money: 200,
     },
     reducers: {
         selectPlayerFigure: (state, action) => {
@@ -18,6 +19,6 @@ export const playerFigureSlice = createSlice({
     }
 })
 
-export const {selectPlayerFigure} = playerFigureSlice.actions
+export const {selectPlayerFigure} = playerSlice.actions
 
-export default playerFigureSlice.reducer
+export default playerSlice.reducer

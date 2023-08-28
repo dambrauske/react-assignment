@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectPlayerFigure} from "../features/playerFigureSlice.jsx";
+import {selectPlayerFigure} from "../features/playerSlice.jsx";
 import {useNavigate} from "react-router-dom";
 
 const IndexPage = () => {
