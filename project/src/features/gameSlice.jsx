@@ -19,7 +19,8 @@ export const gameSlice = createSlice({
         lap: lap ? JSON.parse(lap) : 0,
         money: money ? JSON.parse(money) : 200,
         bought: boughtStreets ? JSON.parse(boughtStreets) : [],
-        error: ''
+        error: '',
+        modal: false,
     },
     reducers: {
         rollDice: (state) => {
@@ -80,12 +81,15 @@ export const gameSlice = createSlice({
             state.money += street.price
             state.bought = state.bought.filter(item => item.number !== street.number)
             localStorage.setItem('boughtStreets', JSON.stringify(state.bought))
+        },
+        setModal: (state, action) => {
+            state.modal = action.payload
         }
 
     }
 })
 
 
-export const {rollDice, selectPlayerFigure, movePlayer, addStreetToBought, payMoney, setNewGame, setErrorMessage, sellStreet} = gameSlice.actions
+export const {rollDice, selectPlayerFigure, movePlayer, addStreetToBought, payMoney, setNewGame, setErrorMessage, sellStreet, setModal} = gameSlice.actions
 
 export default gameSlice.reducer

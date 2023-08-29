@@ -10,7 +10,6 @@ const Cell = ({cell}) => {
     const playerMoney = useSelector((state) => state.game.money)
     const dispatch = useDispatch()
 
-    console.log(boughtStreets)
     const handleBuy = (cell, price) => {
         if (playerMoney >= price) {
             dispatch(addStreetToBought(cell))
