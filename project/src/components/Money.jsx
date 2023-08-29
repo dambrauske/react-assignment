@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 const Money = () => {
 
-    const money = useSelector((state) => state.player.money)
+    const money = useSelector((state) => state.game.money)
 
     return (
         <div className={"bg-slate-200 py-2 px-4"}>

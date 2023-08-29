@@ -1,10 +1,8 @@
 import {configureStore} from "@reduxjs/toolkit";
-import playerSliceReducer  from "./features/playerSlice.jsx";
-import boardSliceReducer from "./features/gameBoardSlice.jsx";
+import gameSliceReducer from "./features/gameSlice.jsx";
 
 export default configureStore({
     reducer: {
-        player: playerSliceReducer,
-        gameBoard: boardSliceReducer,
+        game: gameSliceReducer,
     }
 })

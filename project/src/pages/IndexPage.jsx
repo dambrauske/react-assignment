@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectPlayerFigure} from "../features/playerSlice.jsx";
+import {selectPlayerFigure, setNewGame} from "../features/gameSlice.jsx";
 import {useNavigate} from "react-router-dom";
 
 const IndexPage = () => {
@@ -13,37 +13,49 @@ const IndexPage = () => {
         'https://fox8.com/wp-content/uploads/sites/12/2022/04/BattleShip-Copy.png',
     ]
 
-    const chosen = useSelector((state) => state.playerFigure)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const playerFigure = useSelector((state) => state.game.chosenFigure)
+    const [errorMessage, setErrorMessage] = useState("")
 
+    console.log(playerFigure)
 
+    const startGame = () => {
+        if (playerFigure) {
+            setErrorMessage('')
+            dispatch(setNewGame())
+            navigate("/gameBoard")
+        } else {
+            setErrorMessage('Please select player figure')
+        }
 
-    console.log(chosen)
-
-
+    }
 
     return (
-        <div className={"flex justify-center items-center h-screen"}>
-            <div className={"flex flex-col gap-10 items-center"}>
-                <div className={"flex flex-col gap-4 items-center"}>
+        <div className={"flex justify-center items-center h-screen bg-slate-50"}>
+            <div className={"flex flex-col gap-4 items-center"}>
+                <div className={"flex flex-col gap-6 items-center"}>
                     <div>Choose player figure</div>
                     <div className={"flex gap-6 justify-center items-center"}>
                         {playerFigures.map((figure, i) => (
                                 <div
                                     onClick={() => dispatch(selectPlayerFigure(figure))}
                                     key={i}
-                                    className={"w-16 h-16 bg-yellow-200 border-2 border-black rounded-md cursor-pointer hover:bg-green-200"}>
+                                    className={`w-16 h-16 border-2 border-black rounded-md cursor-pointer hover:bg-green-200 ${playerFigure === figure ? `bg-green-200` : `bg-yellow-200`}`}>
                                     <img className={"w-full h-full object-cover"} src={figure} alt=""/>
                                 </div>
                             )
                         )}
                     </div>
                 </div>
+                <div className={"h-8 text-red-600"}>
+                    <div>{errorMessage}</div>
+                </div>
                 <button
-                    onClick={() => navigate("/gameBoard")}
+                    onClick={startGame}
                     className={"bg-sky-300 border-2 border-black rounded-md w-40 py-2"}>
-                    Start game</button>
+                    Start game
+                </button>
             </div>
         </div>
     );
