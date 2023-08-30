@@ -44,7 +44,7 @@ const createFullBoard = () => {
             cell.price = 80;
         } else if (!cell.color && item !== 0) {
             cell.color = "violet";
-            cell.price = 155;
+            cell.price = 160;
         }
 
         if (item > 1) {

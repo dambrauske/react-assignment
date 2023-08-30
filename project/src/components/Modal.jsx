@@ -25,7 +25,7 @@ const Modal = () => {
                     <i className="fas fa-times text-xl"></i>
                 </div>
                 <div>
-                    You have purchased all streets!
+                    You have purchased all the streets!
                 </div>
                 <button
                     onClick={() => startNewGame()}

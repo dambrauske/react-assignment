@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addStreetToBought, payMoney, setErrorMessage, setModal} from "../features/gameSlice.jsx";
 
@@ -49,7 +49,7 @@ const Cell = ({cell}) => {
 
                     {cell.number === playerPosition &&
                         <div
-                            className={"w-7 h-7 bg-yellow-200 border-2 border-black rounded-full absolute top-1/4 right-1/2 transform translate-x-1/2 "}>
+                            className={"w-7 h-7 bg-yellow-200 border-2 border-black rounded-full absolute top-1/4 right-1/2 transform translate-x-1/2 transition-transform duration-500"}>
                             <img className={"w-full h-full object-cover"} src={playerFigure} alt=""/>
                         </div>
                     }

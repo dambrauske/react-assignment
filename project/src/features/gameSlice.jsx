@@ -32,6 +32,7 @@ export const gameSlice = createSlice({
             localStorage.setItem('figure', JSON.stringify(state.chosenFigure))
         },
         movePlayer: (state) => {
+
             const prevLap = state.lap
             state.lap = state.playerPosition + state.dice > 18 ? state.lap +1 : state.lap
             if (state.lap - 1 === prevLap) {
@@ -79,16 +80,18 @@ export const gameSlice = createSlice({
             const street = action.payload
             state.money += street.price / 2
             state.bought = state.bought.filter(item => item.number !== street.number)
+            state.error = ''
             localStorage.setItem('boughtStreets', JSON.stringify(state.bought))
         },
         setModal: (state, action) => {
             state.modal = action.payload
-        }
+        },
+
 
     }
 })
 
 
-export const {rollDice, selectPlayerFigure, movePlayer, addStreetToBought, payMoney, setNewGame, setErrorMessage, sellStreet, setModal} = gameSlice.actions
+export const {rollDice, selectPlayerFigure, movePlayer, addStreetToBought, payMoney, setNewGame, setErrorMessage, sellStreet, setModal } = gameSlice.actions
 
 export default gameSlice.reducer
