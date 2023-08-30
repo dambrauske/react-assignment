@@ -9,7 +9,6 @@ const Modal = () => {
     const dispatch = useDispatch()
 
     const startNewGame = () => {
-        console.log('play again')
         navigate("/")
         dispatch(setModal(false))
         dispatch(selectPlayerFigure(''))

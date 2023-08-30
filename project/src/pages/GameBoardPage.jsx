@@ -9,8 +9,6 @@ const GameBoardPage = () => {
 
     const modalState = useSelector((state) => state.game.modal)
 
-    console.log(modalState)
-
     return (
         <div>
             {modalState && <Modal/>}

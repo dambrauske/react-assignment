@@ -16,7 +16,7 @@ const Cell = ({cell}) => {
             dispatch(addStreetToBought(cell))
             dispatch(payMoney(price))
 
-            if (boughtStreets.length === 1) {
+            if (boughtStreets.length === 16) {
                 dispatch(setModal(true))
             }
 
