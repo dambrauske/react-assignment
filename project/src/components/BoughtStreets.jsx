@@ -9,7 +9,7 @@ const BoughtStreets = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className={"bg-slate-200 p-2 rounded flex flex-col gap-2 h-60 w-52 overflow-y-auto"}>
+        <div className={"bg-slate-200 p-2 rounded flex flex-col gap-2 h-60 w-48 overflow-y-auto"}>
             <div>Purchased streets:</div>
             {streets && streets.map((street, i) => (
                 <div

@@ -25,8 +25,7 @@ const Dice = () => {
     }
 
     return (
-        <div>
-            <div className={"flex gap-4 justify-center items-center"}>
+            <div className={"flex gap-4 justify-center items-center absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/2"}>
 
                 <div className={"w-16 h-16 rounded-xl border-2 border-black border-double"}>
                     {dice > 0 ?
@@ -39,8 +38,8 @@ const Dice = () => {
 
                 <button
                     onClick={() => handleRollDice()}
-                    className={"flex gap-2 justify-center items-center bg-slate-200 px-4 py-2 rounded hover:bg-slate-300"}>
-                    <div className={"w-8 h-8"}>
+                    className={"bg-slate-200 flex justify-center items-center gap-2 py-2 rounded w-36 hover:bg-indigo-300 hover:text-white"}>
+                    <div className={"h-8"}>
                         <img className={"w-full h-full object-contain"}
                              src="https://www.online-stopwatch.com/images/dice.png" alt=""/>
                     </div>
@@ -49,7 +48,6 @@ const Dice = () => {
                     </div>
                 </button>
             </div>
-        </div>
     );
 };
 

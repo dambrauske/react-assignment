@@ -9,21 +9,17 @@ const GameStats = () => {
     const error = useSelector((state) => state.game.error)
 
     return (
-        <div>
-            <div className={"absolute inset-0 flex items-center justify-center gap-6"}>
-                <div className={"flex flex-col gap-4"}>
-                    <Dice/>
-                    <Money/>
-                    <div className={"h-6 flex justify-center items-center text-red-600"}>
-                        <div>{error}</div>
-                    </div>
-                </div>
-                <div>
-                    <BoughtStreets/>
-                </div>
 
+        <div className={"flex items-center justify-center gap-6 md:w-2/6 lg:w-1/6 pe-6"}>
+            <div className={"flex flex-col gap-4"}>
+                <Money/>
+                <div className={"h-6 flex justify-center items-center text-red-600"}>
+                    <div>{error}</div>
+                </div>
+                <BoughtStreets/>
             </div>
         </div>
+
     );
 };
 

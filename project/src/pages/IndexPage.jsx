@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {selectPlayerFigure, setNewGame} from "../features/gameSlice.jsx";
 import {useNavigate} from "react-router-dom";

@@ -25,44 +25,57 @@ const Cell = ({cell}) => {
         }
     }
 
-    console.log(boughtStreets.length)
-
-
     return (
-        <div className={"flex flex-col justify-center"}>
+        <div className={"flex flex-col justify-center relative"}>
             {cell.number !== 0 ?
-                <div className={"flex flex-col justify-between items-center h-full bg-slate-200 relative"}>
-                    <div>
-                        {cell.text}
-                    </div>
+                <div
+                    className={`flex flex-col ${cell.text === "START" ? "justify-center" : "justify-between"} items-center h-full bg-slate-200`}>
+                    {cell.text !== "START" ?
+                        <div>
+                            {cell.text}
+                        </div>
+                        :
+                        <div className={"text-red-500 font-bold text-2xl flex justify-center items-center gap-2"}>
+                            <div>
+                                {cell.text}
+                            </div>
+                            <i className="fas fa-arrow-right"></i>
 
-                    {cell.number !== 1 &&
-                        <div> {cell.price} $</div>
+                        </div>
+                    }
+                    {cell.number !== 1 && cell.text !== "START" &&
+                        <div className={"mt-6"}> {cell.price} $</div>
                     }
 
                     {cell.number === playerPosition &&
                         <div
-                            className={"w-8 h-8 bg-yellow-200 border-2 border-black rounded-full absolute top-0 right-5"}>
+                            className={"w-7 h-7 bg-yellow-200 border-2 border-black rounded-full absolute top-1/4 right-1/2 transform translate-x-1/2 "}>
                             <img className={"w-full h-full object-cover"} src={playerFigure} alt=""/>
                         </div>
                     }
 
                     {boughtStreets.some((boughtCell) => boughtCell.number === cell.number) && (
-                        <div className={"w-12 h-6 rounded-xl absolute top-0 left-0 bg-white border-black text-xs flex justify-center items-center border-2"}>
-                            bought
+                        <div className={"h-6 absolute bottom-0 right-1/2 transform translate-x-1/2"}>
+                            <img className={"w-full object-cover h-full"}
+                                 src="https://www.monopolylifesized.com/app/dist/img/827fb3f5589254d9f7e160637a94f345.png"
+                                 alt=""/>
                         </div>
                     )}
 
-                    <div className={"h-6 w-full flex justify-center"} style={{backgroundColor: `${cell.color}`}}>
+                    {cell.text !== "START" &&
 
-                        {cell.number === playerPosition && cell.text !== "START" && !boughtStreets.some((boughtCell) => boughtCell.number === cell.number) ?
-                            <button
-                                onClick={() => handleBuy(cell, cell.price)}
-                                className={"bg-slate-50 px-2 hover:bg-slate-200 cursor-pointer z-10"}>Buy</button>
-                            :
-                            null
-                        }
-                    </div>
+                        <div className={"h-6 w-full flex justify-center"} style={{backgroundColor: `${cell.color}`}}>
+
+
+                            {cell.number === playerPosition && cell.text !== "START" && !boughtStreets.some((boughtCell) => boughtCell.number === cell.number) ?
+                                <button
+                                    onClick={() => handleBuy(cell, cell.price)}
+                                    className={"bg-slate-50 px-2 hover:bg-slate-200 cursor-pointer z-10"}>Buy</button>
+                                :
+                                null
+                            }
+                        </div>
+                    }
                 </div>
 
                 :
