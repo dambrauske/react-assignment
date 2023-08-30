@@ -18,8 +18,6 @@ const IndexPage = () => {
     const playerFigure = useSelector((state) => state.game.chosenFigure)
     const [errorMessage, setErrorMessage] = useState("")
 
-    console.log(playerFigure)
-
     const startGame = () => {
         if (playerFigure) {
             setErrorMessage('')

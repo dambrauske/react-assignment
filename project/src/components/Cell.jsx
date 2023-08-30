@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addStreetToBought, payMoney, setErrorMessage} from "../features/gameSlice.jsx";
+import {addStreetToBought, payMoney, setErrorMessage, setModal} from "../features/gameSlice.jsx";
 
 const Cell = ({cell}) => {
 
@@ -11,13 +11,21 @@ const Cell = ({cell}) => {
     const dispatch = useDispatch()
 
     const handleBuy = (cell, price) => {
+
         if (playerMoney >= price) {
             dispatch(addStreetToBought(cell))
             dispatch(payMoney(price))
+
+            if (boughtStreets.length === 1) {
+                dispatch(setModal(true))
+            }
+
         } else {
             dispatch(setErrorMessage('Not enough money'))
         }
     }
+
+    console.log(boughtStreets.length)
 
 
     return (
