@@ -13,8 +13,8 @@ const GameBoardPage = () => {
     return (
         <div>
             {modalState && <Modal/>}
-            <div className={"flex gap-4"}>
-                <div className={"h-screen grid grid-cols-6 gap-1 w-5/6 relative p-2"}>
+            <div className="flex gap-4">
+                <div className="h-screen grid grid-cols-6 gap-1 w-5/6 relative p-2">
 
                 {board.map((cell, i) => (
                         <Cell

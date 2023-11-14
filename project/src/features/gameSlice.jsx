@@ -8,18 +8,17 @@ const money = localStorage.getItem("money");
 const lap = localStorage.getItem("lap");
 const dice = localStorage.getItem("dice");
 
-
 export const gameSlice = createSlice({
     name: "game",
     initialState: {
         gameBoard: board,
         dice: dice ? JSON.parse(dice) : 0,
-        chosenFigure: figure ? JSON.parse(figure) : '',
+        chosenFigure: figure ? JSON.parse(figure) : undefined,
         playerPosition: playerPosition ? JSON.parse(playerPosition) : 1,
         lap: lap ? JSON.parse(lap) : 0,
         money: money ? JSON.parse(money) : 200,
         bought: boughtStreets ? JSON.parse(boughtStreets) : [],
-        error: '',
+        error: undefined,
         modal: false,
     },
     reducers: {
@@ -32,7 +31,6 @@ export const gameSlice = createSlice({
             localStorage.setItem('figure', JSON.stringify(state.chosenFigure))
         },
         movePlayer: (state) => {
-
             const prevLap = state.lap
             state.lap = state.playerPosition + state.dice > 18 ? state.lap +1 : state.lap
             if (state.lap - 1 === prevLap) {
@@ -50,7 +48,7 @@ export const gameSlice = createSlice({
             state.money = 200
             state.bought = []
             state.dice = 0
-            state.error = ''
+            state.error = undefined
             state.modal = false
             localStorage.setItem('lap', state.lap)
             localStorage.setItem('playerPosition', state.playerPosition)
@@ -63,11 +61,10 @@ export const gameSlice = createSlice({
             if (alreadyBought) {
                 state.error = 'Already bought street'
             } else {
-                state.error = ''
+                state.error = undefined
                 state.bought.push(action.payload)
                 localStorage.setItem('boughtStreets', JSON.stringify(state.bought))
             }
-
         },
         payMoney: (state, action) => {
             state.money -= action.payload
@@ -80,14 +77,12 @@ export const gameSlice = createSlice({
             const street = action.payload
             state.money += street.price / 2
             state.bought = state.bought.filter(item => item.number !== street.number)
-            state.error = ''
+            state.error = undefined
             localStorage.setItem('boughtStreets', JSON.stringify(state.bought))
         },
         setModal: (state, action) => {
             state.modal = action.payload
         },
-
-
     }
 })
 
